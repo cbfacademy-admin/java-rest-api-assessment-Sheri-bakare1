@@ -1,25 +1,39 @@
 package com.cbfacademy.apiassessment.model;
 // this is a simple user profile
 
-public class User {
+import com.fasterxml.jackson.annotation.JsonTypeId;
 
-    private int id;
+import java.time.LocalDate;
+
+@Entity
+@Table
+public class User {
+     @JsonTypeId
+     @
+    private Long id;
     private String name;
-    private int age;
+
+    private LocalDate dob;
+    private Integer age;
     private String email;
 
-    public User( int id, String name, int age, String email) {
+    public User( Long id,
+                 String name,
+                 Integer age,
+                 LocalDate dob,
+                 String email) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.dob = dob;
     }
 
-    public int getID() {
+    public Long getID() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,7 +52,13 @@ public class User {
     public void setAge() {
         this.age = age;
     }
+    public LocalDate getDob() {
+        return dob;
+    }
 
+    public void setDob() {
+        this.dob = dob;
+    }
     public String getEmail() {
         return email;
     }

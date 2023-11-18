@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class Appliance {
     private String name;
     @JsonProperty("desc")
