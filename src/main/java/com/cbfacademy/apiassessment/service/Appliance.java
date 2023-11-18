@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//I'm hoping to get a list of appliances printed from my heating equipment child class
 public class Appliance {
     // Appliance class properties and methods here
 }
@@ -16,7 +17,7 @@ public class Appliance {
 public class JSONFileHandler {
     public static List<Appliance> readFile(String filePath) throws IllegalArgumentException {
         if (!filePath.endsWith(".json")) {
-            throw new IllegalArgumentException("Error - file must be a JSON file");
+            throw new IllegalArgumentException("You must provide a JSON file");
         }
 
         List<Appliance> appliances = new ArrayList<>();
@@ -33,7 +34,7 @@ public class JSONFileHandler {
 
     public static void saveToFile(List<Appliance> appliances, String filePath) throws IllegalArgumentException {
         if (!filePath.endsWith(".json")) {
-            throw new IllegalArgumentException("Error - output file must be a JSON file");
+            throw new IllegalArgumentException("Your output must be a JSON file");
         }
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
