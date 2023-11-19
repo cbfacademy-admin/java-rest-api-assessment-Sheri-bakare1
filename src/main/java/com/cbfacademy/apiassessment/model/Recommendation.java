@@ -1,35 +1,39 @@
 package com.cbfacademy.apiassessment.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.time.LocalDateTime;
-
 public class Recommendation {
-    private Appliance appliance;
-    private String reason;
-    private LocalDateTime timestamp;
+    private String appliance;
+    private int size;
+    private int price;
 
-    public Appliance getAppliance() {
+    public Recommendation(String appliance, int size, int price) {
+        this.appliance = appliance;
+        this.size = size;
+        this.price = price;
+    }
+
+    public String getAppliance() {
         return appliance;
     }
 
-    public void setAppliance(Appliance appliance) {
+    public void setAppliance(String appliance) {
         this.appliance = appliance;
     }
 
-    public String getReason() {
-        return reason;
+    public int getSize() {
+        return size;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setSize(int size) {
+        this.size = size;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public int getPrice() {
+        return price;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setPrice(int price) {
+        this.price = price;
     }
+
 }
+

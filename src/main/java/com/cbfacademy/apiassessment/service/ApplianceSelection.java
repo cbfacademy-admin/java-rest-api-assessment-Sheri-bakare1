@@ -1,16 +1,9 @@
-package com.cbfacademy.apiassessment.model;
+package com.cbfacademy.apiassessment.service;
 
-///This is the logic for selecting the appliance based on the number of rooms and the presence of radiatiors
-public class ApplianceSelection extends Appliance {
+import com.cbfacademy.apiassessment.model.Recommendation;
 
-
-    public ApplianceSelection(String name, String description, String type, int volume, int size, int price) {
-        super(name, description, type, volume, size, price);
-    }
-
-    public ApplianceSelection() {
-        super();
-    }
+///This is the logic for selecting the appliance based on the number of rooms and the presence of radiators
+public class ApplianceSelection  {
 
 
     public Recommendation createHeatPumpRecommendation(Integer numberOfRooms) {

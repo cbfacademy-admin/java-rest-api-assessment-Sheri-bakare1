@@ -1,15 +1,16 @@
 package com.cbfacademy.apiassessment.controller;
 
-import com.cbfacademy.apiassessment.model.Appliance;
 import com.cbfacademy.apiassessment.model.Recommendation;
 import com.cbfacademy.apiassessment.model.User;
 import com.cbfacademy.apiassessment.service.HeatingEquipment;
+import com.cbfacademy.apiassessment.service.JSONFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -30,6 +31,12 @@ public class RecommendationController {
 
         List<Recommendation> recommendations = heating.getSortedRecommendations(numberOfRooms, numberOfRadiators);
 
+            try {
+                JSONFileHandler.saveRecommendationsToFile(recommendations, "/Users/sherib/cbfacademy/java-rest-api-assessment-Sheri-bakare1/src/main/repository.json");
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
         return ResponseEntity.ok(recommendations);
     }
 

@@ -1,15 +1,18 @@
 package com.cbfacademy.apiassessment.service;
 
+import com.cbfacademy.apiassessment.model.Recommendation;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-//I'm hoping to get a list of appliances printed from my heating equipment child class
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.GsonBuilder;
+//This class will handle the list of recommendations of the appliances printed from my heating equipment class
+
 
 public class JSONFileHandler {
 

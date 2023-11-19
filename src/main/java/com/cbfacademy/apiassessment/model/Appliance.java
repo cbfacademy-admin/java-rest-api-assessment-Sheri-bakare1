@@ -5,17 +5,13 @@ public class Appliance {
     @JsonProperty("desc")
     private String description;
     private String type;
-    private int volume;
-    private int size;
     private int price;
 
     // Constructor
-    public Appliance(String name, String description, String type, int volume, int size, int price) {
+    public Appliance(String name, String description, String type, int price) {
         this.name = name;
         this.description = description;
         this.type = type;
-        this.volume = volume;
-        this.size = size;
         this.price = price;
     }
 
@@ -44,21 +40,7 @@ public class Appliance {
         this.type = type;
     }
 
-    public int getVolume() {
-        return volume;
-    }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
 
     public int getPrice() {
         return price;
