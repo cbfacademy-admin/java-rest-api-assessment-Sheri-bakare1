@@ -3,6 +3,7 @@ package com.cbfacademy.apiassessment.controller;
 import com.cbfacademy.apiassessment.model.Appliance;
 import com.cbfacademy.apiassessment.model.Recommendation;
 import com.cbfacademy.apiassessment.model.User;
+import com.cbfacademy.apiassessment.service.HeatingEquipment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,26 +16,21 @@ import java.time.Month;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "api/v1/recommendation")
 public class RecommendationController {
-    @GetMapping("/")
-    public ResponseEntity hello() {
-        return ResponseEntity.ok("Hello Mum");
 
-    }
-    @GetMapping("/recommendations")
-    public ResponseEntity recommendations() {
-        Appliance A = new Appliance();
-        A.setName("Heat Pump");
-        A.setDescription("This is a Heat Pump");
-        A.setVolume(100);
-        A.setSize(2);
+    // The recommended controller is creating a new instance of the recommendation, based on the criteria which are the number of rooms and the presence of radiators
+    //It will sort the recommendation in the HeatingEquipment class to give a list of recommendation
+    @GetMapping
+    public ResponseEntity<List<Recommendation>> recommendations() {
+        HeatingEquipment heating = new HeatingEquipment();
 
-        Recommendation rec = new Recommendation();
-        rec.setAppliance (A);
-        rec.setReason("This is best suited for you based on the number of people in you household");
-        rec.setTimestamp(LocalDateTime.now());
-        return ResponseEntity.ok(rec);
+        int numberOfRooms = 2;
+        int numberOfRadiators = 0;
 
+        List<Recommendation> recommendations = heating.getSortedRecommendations(numberOfRooms, numberOfRadiators);
+
+        return ResponseEntity.ok(recommendations);
     }
 
     @GetMapping("/user")
@@ -50,26 +46,4 @@ public class RecommendationController {
         );
     }
 
-    @RestController
-    @RequestMapping(path = "api/v1/recommendation")
-    public class RecommendedController {
-        @GetMapping
-        public ResponseEntity<Recommendation> recommendations() {
-            // This creates a new appliance
-            Appliance appliance = new Appliance();
-            appliance.setName("Heat Pump");
-            appliance.setDescription("This is a Heat Pump");
-            appliance.setVolume(100);
-            appliance.setSize(2);
-
-            // This creates a new recommendation
-            Recommendation recommendation = new Recommendation();
-            recommendation.setAppliance(appliance);
-            recommendation.setReason("This is best suited for you based on the number of people in your household");
-            recommendation.setTimestamp(LocalDateTime.now());
-
-            // This is return the recommendation wrapped in a ResponseEntity
-            return ResponseEntity.ok(recommendation);
-        }
-    }
 }

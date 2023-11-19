@@ -1,15 +1,9 @@
 package com.cbfacademy.apiassessment.model;
 // this is a simple user profile
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
-
 import java.time.LocalDate;
 
-@Entity
-@Table
 public class User {
-     @JsonTypeId
-     @
     private Long id;
     private String name;
 

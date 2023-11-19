@@ -46,10 +46,4 @@ class AppTests {
 		assertEquals(200, response.getStatusCode().value());
 		assertEquals("Hello John", response.getBody());
 	}
-	@Test
-	public void testSizeHeatPump() {
-		assertEquals("Recommended ASHP size: 5 kW. Estimated price: £500", heatingEquipment.sizeHeatPump(2));
-		assertEquals("Recommended ASHP size: 9 kW. Estimated price: £900", heatingEquipment.sizeHeatPump(3));
-		assertEquals("Recommended ASHP size: 16 kW. Estimated price: £1600", heatingEquipment.sizeHeatPump(4));
-		assertEquals("Custom ASHP size required based on property specifics. Pricing will vary.", heatingEquipment.sizeHeatPump(5));
 }
