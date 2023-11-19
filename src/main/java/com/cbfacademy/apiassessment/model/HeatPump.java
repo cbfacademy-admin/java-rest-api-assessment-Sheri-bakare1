@@ -7,7 +7,7 @@ public class HeatPump extends Appliance {
         private int radiators;
 
         public HeatPump(String name, String description, String type, String volume, int size, int rooms, int radiators, double price) {
-            super(name, description, type, price);
+            super();
             this.volume = volume;
             this.size = size;
             this.rooms = rooms;
