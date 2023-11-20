@@ -1,5 +1,6 @@
 package com.cbfacademy.apiassessment.controller;
 
+import com.cbfacademy.apiassessment.model.Appliance;
 import com.cbfacademy.apiassessment.model.Recommendation;
 import com.cbfacademy.apiassessment.model.User;
 import com.cbfacademy.apiassessment.service.HeatingEquipment;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
 
+//README.md contains more information on the endpoint
 @RestController
 @RequestMapping(path = "api/v1/recommendation")
 public class RecommendationController {
@@ -23,34 +26,16 @@ public class RecommendationController {
     // The recommended controller is creating a new instance of the recommendation, based on the criteria which are the number of rooms and the presence of radiators
     //It will sort the recommendation in the HeatingEquipment class to give a list of recommendation
     @GetMapping
-    public ResponseEntity<List<Recommendation>> recommendations() {
-        HeatingEquipment heating = new HeatingEquipment();
+    public ResponseEntity recommendations(@RequestParam(value = "rooms") int rooms, @RequestParam(value = "radiators") int radiators) {
 
-        int numberOfRooms = 2;
-        int numberOfRadiators = 0;
+        try {
+            HeatingEquipment heating = new HeatingEquipment();
 
-        List<Recommendation> recommendations = heating.getSortedRecommendations(numberOfRooms, numberOfRadiators);
+            List<Appliance> recommendations = heating.getSortedAppliances(rooms, radiators);
 
-            try {
-                JSONFileHandler.saveRecommendationsToFile(recommendations, "/Users/sherib/cbfacademy/java-rest-api-assessment-Sheri-bakare1/src/main/repository.json");
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-        return ResponseEntity.ok(recommendations);
+            return ResponseEntity.ok(recommendations);
+        } catch (IOException exception) {
+            return ResponseEntity.internalServerError().body("Unable to obtain recommendation");
+        }
     }
-
-    @GetMapping("/user")
-    public List<User> profile() {
-        return List.of(
-                new User(
-                        1L,
-                        "Lily",
-                        30,
-                        LocalDate.of(1993, Month.JUNE, 20),
-                        "lily.williams@gmail.com"
-                )
-        );
-    }
-
 }

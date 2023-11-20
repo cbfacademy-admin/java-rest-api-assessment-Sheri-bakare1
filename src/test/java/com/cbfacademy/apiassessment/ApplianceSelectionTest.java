@@ -15,30 +15,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 ;
 
-@DisplayName("ApplianceSelection class should")
+@DisplayName("The ApplianceSection class Test")
 public class ApplianceSelectionTest {
 
     @ParameterizedTest
     @MethodSource("heatPumpInputAndOutput")
     @DisplayName("return valid heat pump recommendation for valid input")
-    public void returnValidHeatPumpRecommendation(Integer numberOfRooms, int expectedPrice) {
+    public void returnValidHeatPumpRecommendation(Integer numberOfRooms, Integer numberOfRadiators, int expectedPrice) {
         ApplianceSelection applianceSelection = new ApplianceSelection();
-        Recommendation recommendation = applianceSelection.createHeatPumpRecommendation(numberOfRooms);
+        Recommendation recommendation = applianceSelection.createHeatPumpRecommendation(numberOfRooms, numberOfRadiators);
         assertThat(recommendation.getPrice(), is(expectedPrice));
     }
 
     static Stream<Arguments> heatPumpInputAndOutput() {
+        // This assumes that the number radiators for heat pumps is 0
         return Stream.of(
-                arguments(2, 1700),
+                arguments(2, 1700), // This assumes that the number radiators for heat pumps is 0
                 arguments(3, 2400),
                 arguments(4, 3100)
         );
     }
-    @Test
-    @DisplayName("throw RuntimeException for invalid heat pump input")
-    public void throwRuntimeExceptionForInvalidHeatPumpInput() {
-        ApplianceSelection applianceSelection = new ApplianceSelection();
-    }
+
 
     @ParameterizedTest
     @MethodSource("boilerInputAndOutput")
@@ -61,9 +58,9 @@ public class ApplianceSelectionTest {
     @ParameterizedTest
     @MethodSource("mchpInputAndOutput")
     @DisplayName("return MCHP recommendation for valid input")
-    public void returnValidMchpRecommendation(Integer numberOfRooms, int expectedPrice) {
+    public void returnValidMchpRecommendation(Integer numberOfRooms,Integer numberOfRadiators ,int expectedPrice) {
         ApplianceSelection applianceSelection = new ApplianceSelection();
-        Recommendation recommendation = applianceSelection.createMchpRecommendation(numberOfRooms);
+        Recommendation recommendation = applianceSelection.createMchpRecommendation(numberOfRooms, numberOfRadiators);
         assertThat(recommendation.getPrice(), is(expectedPrice));
     }
 

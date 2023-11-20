@@ -1,8 +1,9 @@
 package com.cbfacademy.apiassessment.service;
 //My logic for selecting thr right appliance
 
-import com.cbfacademy.apiassessment.model.Recommendation;
+import com.cbfacademy.apiassessment.model.Appliance;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,31 +12,31 @@ public class HeatingEquipment {
 
     private ApplianceSelection applianceSelection = new ApplianceSelection();
 
-    public List<Recommendation> getSortedRecommendations(int numberOfRooms, int numberOfRadiators) {
-        List<Recommendation> recommendations = new ArrayList<>();
+    public List<Appliance> getSortedAppliances(int numberOfRooms, int numberOfRadiators) throws IOException {
+        List<Appliance> appliances = new ArrayList<>();
 
-        // This method will add a heat pump recommendation
-        Recommendation heatPump = applianceSelection.createHeatPumpRecommendation(numberOfRooms);
+        // This method will add a heat pump appliance
+        Appliance heatPump = applianceSelection.createHeatPumpRecommendation(numberOfRooms,numberOfRadiators);
         if (heatPump != null) {
-            recommendations.add(heatPump);
+            appliances.add(heatPump);
         }
 
-        // This method will add a boiler recommendation
-        Recommendation boiler = applianceSelection.createBoilerRecommendation(numberOfRooms, numberOfRadiators);
+        // This method will add a boiler appliance
+        Appliance boiler = applianceSelection.createBoilerRecommendation(numberOfRooms, numberOfRadiators);
         if (boiler != null) {
-            recommendations.add(boiler);
+            appliances.add(boiler);
         }
 
-        // This method will add a MCHP recommendation
-        Recommendation mchp = applianceSelection.createMchpRecommendation(numberOfRooms);
+        // This method will add a MCHP appliance
+        Appliance mchp = applianceSelection.createMchpRecommendation(numberOfRooms,numberOfRadiators);
         if (mchp != null) {
-            recommendations.add(mchp);
+            appliances.add(mchp);
         }
 
-        // This allows the recommendations to be sort by price
-        recommendations.sort(Comparator.comparingInt(Recommendation::getPrice));
+        // This allows the appliances to be sort by price
+        appliances.sort(Comparator.comparingInt(Appliance::getPrice));
 
-        return recommendations;
+        return appliances;
     }
 
 }

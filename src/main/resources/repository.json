@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Heat pump 2000",
+    "description": "This is the heat pump 2000",
+    "type": "HeatPump",
+    "size": 9,
+    "rooms": 3,
+    "radiators": 0,
+    "price": 2400.0
+  },
+  {
+    "id": 3,
+    "name": "Jameson mCHP 4.5",
+    "description": "This is the micro-CHP made by Jameson",
+    "type": "MCHP",
+    "size": 45,
+    "rooms": 3,
+    "radiators": 0,
+    "price": 1300.0
+  }
+]

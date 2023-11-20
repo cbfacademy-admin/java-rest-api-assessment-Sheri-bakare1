@@ -1,37 +1,29 @@
 package com.cbfacademy.apiassessment.service;
 
-import com.cbfacademy.apiassessment.model.Recommendation;
+import com.cbfacademy.apiassessment.model.*;
+import com.cbfacademy.apiassessment.repository.ApplianceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 ///This is the logic for selecting the appliance based on the number of rooms and the presence of radiators
-public class ApplianceSelection  {
+public class ApplianceSelection {
 
+    @Autowired
+    private ApplianceRepository repository;
 
-    public Recommendation createHeatPumpRecommendation(Integer numberOfRooms) {
+    public Appliance createHeatPumpRecommendation(Integer numberOfRooms, Integer numberOfRadiators) throws IOException {
         if (numberOfRooms == null) {
             throw new RuntimeException("Number of rooms cannot be null");
         }
+        List<Appliance> applianceList = repository.readAll();
+        Optional<Appliance> optional = applianceList.stream().filter(appliance ->
+                appliance.getType().equals("HeatPump") &&
+                        (appliance.getRooms() == numberOfRooms || appliance.getRadiators() == numberOfRadiators)).findFirst();
 
-        int ashpSize;
-        int price;
-
-        switch (numberOfRooms) {
-            case 2:
-                ashpSize = 5;
-                price = 1700;
-                break;
-            case 3:
-                ashpSize = 9;
-                price = 2400;
-                break;
-            case 4:
-                ashpSize = 16;
-                price = 3100;
-                break;
-            default:
-                throw new RuntimeException("Invalid number of rooms for heat pump sizing");
-        }
-
-        return new Recommendation("Heat Pump", ashpSize, price);
+        return optional.orElse(null);
     }
 
     // This method for sizing a boiler and getting its price
@@ -55,12 +47,13 @@ public class ApplianceSelection  {
         } else {
             throw new RuntimeException("Invalid parameters for boiler sizing");
         }
+        Boiler boiler = new Boiler("Boiler Name", "Boiler Description", "Boiler Type", boilerSize, numberOfRooms, numberOfRadiators);
 
-        return new Recommendation("Boiler", boilerSize, price);
+        return new Recommendation(boiler, price);
     }
 
     // Method for sizing an MCHP and getting its price
-    public Recommendation createMchpRecommendation(Integer numberOfRooms) {
+    public Recommendation createMchpRecommendation(Integer numberOfRooms, Integer numberOfRadiators) {
         if (numberOfRooms == null) {
             throw new RuntimeException("Please review the number of rooms entered.Number of rooms cannot be null");
         }
@@ -84,7 +77,9 @@ public class ApplianceSelection  {
             default:
                 throw new RuntimeException("Please review the number of rooms for MCHP sizing. Please enter a valid number of rooms.");
         }
+        MCHP mchp = new MCHP("MCHP Name", "MCHP Description", "MCHP Type", mchpSize, numberOfRooms, numberOfRadiators);
 
-        return new Recommendation("MCHP", mchpSize, price);
+
+        return new Recommendation(mchp, price);
     }
 }
