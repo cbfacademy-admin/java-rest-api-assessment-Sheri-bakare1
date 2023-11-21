@@ -5,7 +5,7 @@
     "size": "5",
     "rooms": 2,
     "type": "HeatPump",
-    "radiators": 0,
+    "radiators": 10,
     "price": 1700.00
   },
   {
@@ -14,7 +14,7 @@
     "size": "9",
     "rooms": 3,
     "type": "HeatPump",
-    "radiators": 0,
+    "radiators": 15,
     "price": 2400.00
   },
   {
@@ -23,7 +23,7 @@
     "size": "16",
     "rooms": 4,
     "type": "HeatPump",
-    "radiators": 0,
+    "radiators": 20,
     "price": 3100.00
   },
   {
@@ -59,7 +59,7 @@
     "size": "25",
     "rooms": 2,
     "type": "MCHP",
-    "radiators": 0,
+    "radiators": 10,
     "price": 900.00
   },
   {
@@ -68,7 +68,7 @@
     "size": "45",
     "rooms": 3,
     "type": "MCHP",
-    "radiators": 0,
+    "radiators": 15,
     "price": 1300.00
   },
   {
@@ -77,7 +77,7 @@
     "size": "65",
     "rooms": 4,
     "type": "MCHP",
-    "radiators": 0,
+    "radiators": 20,
     "price": 1700.00
   }
 ]

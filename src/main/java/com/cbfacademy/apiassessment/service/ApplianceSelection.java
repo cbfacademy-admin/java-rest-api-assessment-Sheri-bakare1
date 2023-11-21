@@ -19,7 +19,7 @@ public class ApplianceSelection {
     private ApplianceRepository repository;
 
     public Appliance createHeatPumpRecommendation(Integer numberOfRooms, Integer numberOfRadiators) throws IOException {
-        if (numberOfRooms == null) {
+        if (numberOfRooms == null || numberOfRadiators == null) {
             throw new RuntimeException("Number of rooms cannot be null");
         }
         List<Appliance> applianceList = repository.readAll();
@@ -46,7 +46,7 @@ public class ApplianceSelection {
 
     // Method for sizing an MCHP and getting its price
     public Appliance createMchpRecommendation(Integer numberOfRooms, Integer numberOfRadiators) throws IOException {
-        if (numberOfRooms == null) {
+        if (numberOfRooms == null || numberOfRadiators == null) {
             throw new RuntimeException("Number of rooms and number of radiators cannot be null");
         }
 
