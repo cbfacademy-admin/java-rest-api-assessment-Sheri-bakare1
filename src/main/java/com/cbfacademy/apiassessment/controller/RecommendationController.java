@@ -22,6 +22,8 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/recommendation")
 public class RecommendationController {
+    @Autowired
+    private HeatingEquipment heating;
 
     // The recommended controller is creating a new instance of the recommendation, based on the criteria which are the number of rooms and the presence of radiators
     //It will sort the recommendation in the HeatingEquipment class to give a list of recommendation
@@ -29,8 +31,6 @@ public class RecommendationController {
     public ResponseEntity recommendations(@RequestParam(value = "rooms") int rooms, @RequestParam(value = "radiators") int radiators) {
 
         try {
-            HeatingEquipment heating = new HeatingEquipment();
-
             List<Appliance> recommendations = heating.getSortedAppliances(rooms, radiators);
 
             return ResponseEntity.ok(recommendations);

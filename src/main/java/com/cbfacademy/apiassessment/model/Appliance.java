@@ -13,7 +13,7 @@ public class Appliance {
 
     private int radiators;
 
-    private double price;
+    private int price;
 
 
     // Constructor
@@ -90,11 +90,11 @@ public class Appliance {
         this.radiators = radiators;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

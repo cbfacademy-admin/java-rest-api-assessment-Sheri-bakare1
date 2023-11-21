@@ -2,14 +2,18 @@ package com.cbfacademy.apiassessment.service;
 //My logic for selecting thr right appliance
 
 import com.cbfacademy.apiassessment.model.Appliance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@Service
 public class HeatingEquipment {
 
+    @Autowired
     private ApplianceSelection applianceSelection = new ApplianceSelection();
 
     public List<Appliance> getSortedAppliances(int numberOfRooms, int numberOfRadiators) throws IOException {
