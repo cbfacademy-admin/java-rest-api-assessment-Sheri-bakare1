@@ -14,7 +14,6 @@ This project will allow you to:
 3. **Handle exceptions that appear in the code e,g some methods throw 'IOException'.**
 4. **Test the ApplianceSelection class.**
 
-Onward with this assessment, you're set for a deep dive into API development with Java and SpringBoot.
 
 ## **API Flow**
 
@@ -29,3 +28,4 @@ The resulting list of Recommendation objects is provided in the HTTP response.
 generate recommendations using an instance of ApplianceSelection. The generated recommendations
   include various types of heating equipment like heat pumps, boilers, and MCHP (micro-CHP). Also, the method adds these recommendations to a list, which is then sorted by price in ascending order.
 - **JSONFileHandler** : This is used to write the list of recommendations to a specified JSON file. and contains a method that an IOException if there is an issue with the file writing process.
+- **ApplianceController**: creates, reads, update, and delete and appliance in the repository.json
