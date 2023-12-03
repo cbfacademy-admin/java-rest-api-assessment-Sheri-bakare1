@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Heat pump 1000",
+    "description": "This is the heat pump 1000",
+    "size": "5",
+    "rooms": 2,
+    "type": "HeatPump",
+    "radiators": 10,
+    "price": 1700.00
+  },
+  {
+    "name": "Heat pump 2000",
+    "description": "This is the heat pump 2000",
+    "size": "9",
+    "rooms": 3,
+    "type": "HeatPump",
+    "radiators": 15,
+    "price": 2400.00
+  },
+  {
+    "name": "Heat pump 5000",
+    "description": "This is the heat pump 1000",
+    "size": "16",
+    "rooms": 4,
+    "type": "HeatPump",
+    "radiators": 20,
+    "price": 3100.00
+  },
+  {
+    "name": "Razar Boiler 10",
+    "description": "This is the Boiler made by Razar",
+    "size": "24",
+    "rooms": 2,
+    "type": "Boiler",
+    "radiators": 10,
+    "price": 750.00
+  },
+  {
+    "name": "Razar Boiler 20",
+    "description": "This is the Boiler made by Razar",
+    "size": "28",
+    "rooms": 3,
+    "type": "Boiler",
+    "radiators": 15,
+    "price": 1150.00
+  },
+  {
+    "name": "Razar Boiler 25",
+    "description": "This is the Boiler made by Razar",
+    "size": "35",
+    "rooms": 4,
+    "type": "Boiler",
+    "radiators": 20,
+    "price": 1150.00
+  },
+  {
+    "name": "Jameson MCHP 2.5",
+    "description": "This is the micro-CHP made by Jameson",
+    "size": "25",
+    "rooms": 2,
+    "type": "MCHP",
+    "radiators": 10,
+    "price": 900.00
+  },
+  {
+    "name": "Jameson mCHP 4.5",
+    "description": "This is the micro-CHP made by Jameson",
+    "size": "45",
+    "rooms": 3,
+    "type": "MCHP",
+    "radiators": 15,
+    "price": 1300.00
+  },
+  {
+    "name": "Jameson mCHP 4.5",
+    "description": "This is the micro-CHP made by Jameson",
+    "size": "65",
+    "rooms": 4,
+    "type": "MCHP",
+    "radiators": 20,
+    "price": 1700.00
+  }
+]
